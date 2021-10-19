@@ -5,32 +5,26 @@ import "fmt"
 // Condicional if CLASE 15
 
 func main() {
-	modulo := 4 % 2
-	switch modulo {
-	case 0:
-		fmt.Println("Es par")
-	default:
-		fmt.Println("Es impar")
+	// Defer: Antes de morirse la funcion
+	//        se ejecuta la linea 10
+	defer fmt.Println("Hola")
+	fmt.Println("Mundo")
+
+	// Continue y break
+	for i := 0; i < 10; i++ {
+		fmt.Println(i)
+
+		// Continue, cuando una condition
+		// me interesa, la freno pero continuo
+		if i == 2 {
+			fmt.Println("Es 2")
+			continue
+		}
+
+		// Break, sentido contrario de continue
+		if i == 8 {
+			fmt.Println("break")
+			break
+		}
 	}
-
-	// O tambien
-
-	switch chumbi := 4 % 2; chumbi {
-	case 0:
-		fmt.Println("Es par")
-	default:
-		fmt.Println("Es impar")
-	}
-
-	// Sin condicion
-	value := 10
-	switch {
-	case value > 100:
-		fmt.Println("Mayor a 100")
-	case value < 0:
-		fmt.Println("Menor que 0")
-	default:
-		fmt.Println("No condition")
-	}
-
 }
