@@ -2,19 +2,14 @@ package main
 
 import "fmt"
 
-// Ciclos CLASE 13
+// Condicional if CLASE 15
 
 func main() {
-	// For condicional
-	for i := 0; i <= 10; i++ {
-		fmt.Println(i)
-	}
-
-	// For while
-	counter := 11
-	for counter < 20 {
-		fmt.Println(counter)
-		counter++
+	valor2 := 1
+	if valor2 == 2 {
+		fmt.Println("ES 2")
+	} else {
+		fmt.Println("NO ES 2")
 	}
 
 }
