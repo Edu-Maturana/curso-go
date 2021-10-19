@@ -2,26 +2,23 @@ package main
 
 import "fmt"
 
-func isPalindrome(text string) {
-	var textReverse string
-
-	for i := len(text) - 1; i >= 0; i-- {
-		textReverse += string(text[i])
-	}
-
-	if text == textReverse {
-		fmt.Println("TRUE")
-	} else {
-		fmt.Println("FALSE")
-	}
-}
+// MAPS || DICCIONARIOS || OBJETOS
 
 func main() {
-	slice := []string{"hola", "que", "hace"}
+	//           llave  valor
+	m := make(map[string]int)
 
-	for i := range slice {
-		fmt.Println(i)
+	m["Jose"] = 14
+	m["Pepito"] = 20
+
+	fmt.Println(m)
+
+	// Recorrer map: Output Jose 14, Pepito 20
+	for i, v := range m {
+		fmt.Println(i, v)
 	}
 
-	isPalindrome("anilina")
+	// Encontrar un valor
+	value, ok := m["Josep"]
+	fmt.Println(value, ok)
 }
