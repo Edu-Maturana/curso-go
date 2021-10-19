@@ -2,31 +2,34 @@ package main
 
 import "fmt"
 
-// FMT CLASE 10
+// Functions CLASE 11
+
+func normalFunction(message string) {
+	fmt.Println(message)
+}
+
+func tripleArgument(m1 string, m2 string, m3 string) {
+	fmt.Println(m1, m2, m3)
+}
+
+func returnValue(a int) int {
+	return a * 2
+}
+
+// Luego de los parametros, se declara lo que retorna tambien
+
+func dobleReturn(a int) (c, d int) {
+	return a, a * 2
+}
 
 func main() {
-	// Variables
-	helloMessage := "Hello"
-	worldMessage := "world"
+	normalFunction("Hola mundo")
+	tripleArgument("Wena", "a", "a")
 
-	fmt.Println(helloMessage, worldMessage)
-	fmt.Println(helloMessage, worldMessage)
+	value := returnValue(2)
+	fmt.Println(value)
 
-	// Printf
-	nombre := "Platzi"
-	cursos := 500
-
-	// %s = indicar q recibe un string
-	// %d = indicar q recibe un integer
-	// %v = valor flexible, para cuando no sabemos el dato
-	fmt.Printf("%s tiene mas de  %d cursos\n", nombre, cursos)
-	fmt.Printf("%v tiene mas de  %d cursos\n", nombre, cursos)
-
-	// Sprintf - genera el string pero lo guarda, no imprime
-	message := fmt.Sprintf("%s tiene mas de %d cursos", nombre, cursos)
-	fmt.Println(message)
-
-	// Tipo de datos
-	fmt.Printf("helloMessage: %T\n", helloMessage)
-	fmt.Printf("cursos: %T\n", cursos)
+	// El _ es para ignorar un valor, en este caso la func retorna 2
+	value1, _ := dobleReturn(2)
+	fmt.Println(value1)
 }
