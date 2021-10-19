@@ -1,32 +1,29 @@
 package main
 
-import (
-	"fmt"
-	"sync"
-)
+import "fmt"
 
-func say(text string, wg *sync.WaitGroup) {
+func say(text string, c chan<- string) {
 
-	// Ultima en ejecutar
-	defer wg.Done()
-
-	fmt.Println(text)
+	// Nombre del canal <- lo que ingresaremos a el
+	c <- text
 }
 
+// A la inversa con salida, mismo de arriba
+
+// func say(text string, c <-chan string) {
+
+// 	// Nombre del canal <- lo que ingresaremos a el
+// 	text = <- c
+// }
+
 func main() {
-	// Acumula conjunto de goroutines y las ejecuta
-	var wg sync.WaitGroup
+	// Crea chan  datatype limit
+	c := make(chan string, 1)
 
-	// Escribe Hello y anade una goroutine
 	fmt.Println("Hello")
-	wg.Add(1)
 
-	// Aqui se ejecuta esa goroutine, con el puntero de wg
-	go say("world", &wg)
+	go say("Bye", c)
 
-	go func(text string) {
-		fmt.Println(text)
-	}("Adios")
-	// Esperar a que todas las rutinas de wg se ejecuten
-	wg.Wait()
+	// El simbolo de linea 8 inverso, en vez de ingresar dato, devuelve la salida
+	fmt.Println(<-c)
 }
