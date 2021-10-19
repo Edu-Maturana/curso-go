@@ -2,29 +2,30 @@ package main
 
 import "fmt"
 
-// Condicional if CLASE 15
-
 func main() {
-	// Defer: Antes de morirse la funcion
-	//        se ejecuta la linea 10
-	defer fmt.Println("Hola")
-	fmt.Println("Mundo")
+	// Array
+	var array [4]int
+	array[0] = 1
+	array[1] = 2
+	//                 Largo: 4    Capacidad: 4
+	fmt.Println(array, len(array), cap(array))
 
-	// Continue y break
-	for i := 0; i < 10; i++ {
-		fmt.Println(i)
+	// Slice
+	slice := []int{0, 1, 2, 3, 4, 5}
+	fmt.Println(slice, len(slice), cap(slice))
 
-		// Continue, cuando una condition
-		// me interesa, la freno pero continuo
-		if i == 2 {
-			fmt.Println("Es 2")
-			continue
-		}
+	// Metodos en el slice
+	fmt.Println(slice[0])
+	fmt.Println(slice[:3])
+	fmt.Println(slice[2:4])
+	fmt.Println(slice[4:])
 
-		// Break, sentido contrario de continue
-		if i == 8 {
-			fmt.Println("break")
-			break
-		}
-	}
+	// Append
+	slice = append(slice, 6)
+	fmt.Println(slice)
+
+	// Append new list
+	newSlice := []int{7, 8, 9, 10}
+	slice = append(slice, newSlice...)
+	fmt.Println(slice)
 }
