@@ -1,40 +1,32 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sync"
+)
 
-type figuras2D interface {
-	area() float64
-}
+func say(text string, wg *sync.WaitGroup) {
 
-type cuadrado struct {
-	base float64
-}
+	// Ultima en ejecutar
+	defer wg.Done()
 
-type rectangulo struct {
-	base   float64
-	altura float64
-}
-
-func (c cuadrado) area() float64 {
-	return c.base * c.base
-}
-
-func (r rectangulo) area() float64 {
-	return r.base * r.altura
-}
-
-func calcular(f figuras2D) {
-	fmt.Println("Area:", f.area())
+	fmt.Println(text)
 }
 
 func main() {
-	myCuadrado := cuadrado{base: 2}
-	myRectangulo := rectangulo{base: 2, altura: 4}
+	// Acumula conjunto de goroutines y las ejecuta
+	var wg sync.WaitGroup
 
-	calcular(myCuadrado)
-	calcular(myRectangulo)
+	// Escribe Hello y anade una goroutine
+	fmt.Println("Hello")
+	wg.Add(1)
 
-	// Lista de interfaces
-	myInterface := []interface{}{"Hola", 12, 9.8}
-	fmt.Println(myInterface...)
+	// Aqui se ejecuta esa goroutine, con el puntero de wg
+	go say("world", &wg)
+
+	go func(text string) {
+		fmt.Println(text)
+	}("Adios")
+	// Esperar a que todas las rutinas de wg se ejecuten
+	wg.Wait()
 }
