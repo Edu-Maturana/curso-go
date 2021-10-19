@@ -2,23 +2,21 @@ package main
 
 import "fmt"
 
-// MAPS || DICCIONARIOS || OBJETOS
+//Structs
+/*
+Tipo de dato - nombre de la clase - struct {}
+*/
+type car struct {
+	brand string
+	year  int
+}
 
 func main() {
-	//           llave  valor
-	m := make(map[string]int)
+	myCar := car{brand: "Ford", year: 2020}
+	fmt.Println(myCar)
 
-	m["Jose"] = 14
-	m["Pepito"] = 20
-
-	fmt.Println(m)
-
-	// Recorrer map: Output Jose 14, Pepito 20
-	for i, v := range m {
-		fmt.Println(i, v)
-	}
-
-	// Encontrar un valor
-	value, ok := m["Josep"]
-	fmt.Println(value, ok)
+	// Otra manera
+	var otherCar car
+	otherCar.brand = "Ferrari"
+	fmt.Println(otherCar)
 }
