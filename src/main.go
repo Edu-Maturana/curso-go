@@ -5,11 +5,32 @@ import "fmt"
 // Condicional if CLASE 15
 
 func main() {
-	valor2 := 1
-	if valor2 == 2 {
-		fmt.Println("ES 2")
-	} else {
-		fmt.Println("NO ES 2")
+	modulo := 4 % 2
+	switch modulo {
+	case 0:
+		fmt.Println("Es par")
+	default:
+		fmt.Println("Es impar")
+	}
+
+	// O tambien
+
+	switch chumbi := 4 % 2; chumbi {
+	case 0:
+		fmt.Println("Es par")
+	default:
+		fmt.Println("Es impar")
+	}
+
+	// Sin condicion
+	value := 10
+	switch {
+	case value > 100:
+		fmt.Println("Mayor a 100")
+	case value < 0:
+		fmt.Println("Menor que 0")
+	default:
+		fmt.Println("No condition")
 	}
 
 }
